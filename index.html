@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url(https://i.pinimg.com/736x/22/5a/e0/225ae0baab17f869e9b0bf9e3ca392da.jpg);
+            background-size: cover;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: pink;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: rgb(255, 174, 188);
+        }
+        #mensagem {
+            margin-top: 10px;
+            color: red;
+        }
+    
+        body {
+            background-color: pink;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <style>
+        .container { 
+            background-color: rgb(255, 209, 217);
+            width: 400px;
+        }
+        </style>
+    <h1>Login</h1>
+    <style>
+        h1 {
+            color: white
+        }
+        form {
+            text-align: center;
+        }
+        input {
+            text-align: center;
+            width: 350px;
+        }
+        label { 
+            color: white;
+        }
+        
+    </style>
+
+    <form id="loginform">
+<form action method="POST">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <br/><br>
+    <label for="password">Senha:</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Entrar</button>
+    <script>
+        document.getElementById("loginform").addEventListener("submit"), function(event){
+            event.preventDefault();
+
+            let email = getElementById("Email").value;
+            let password = getElementById("Password").value;
+
+           let response = fetch("login.php", {
+            metod: "POST",
+            headers: {"Content-Type": "application/json" },
+            body: JSON.stringify({ email: email, senha: senha })
+           });
+
+           let result = response.json();
+           document.getElementById("mensagem").textContent = result.mensagem;
+
+           if (result.sucesso){
+            document.getElementById("mensagem") .style.color="pink";
+            
+           }
+        }
+       
+    </script>
+    </form>
+</body>
+</html>
