@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url(https://i.pinimg.com/736x/22/5a/e0/225ae0baab17f869e9b0bf9e3ca392da.jpg);
+            background-size: cover;
+            text-align: center;
+        }
+        .container {
+            background: rgb(255, 209, 217);
+            width: 400px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: white;
+        }
+        input {
+            width: 70%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: pink;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+        button:hover {
+            background: rgb(255, 174, 188);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: white;
+            padding: 10px;
+            margin: 5px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+        .remove-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .remove-btn:hover {
+            background: darkred;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Itens</h1>
+        <input type="text" id="itemInput" placeholder="Digite um item">
+        <button id="addItem">Adicionar</button>
+        <ul id="lista"></ul>
+    </div>
+
+    <script>
+        document.getElementById("addItem").addEventListener("click", function() {
+            let input = document.getElementById("itemInput");
+            let itemText = input.value.trim();
+
+            if (itemText === "") {
+                alert("Digite um item antes de adicionar!");
+                return;
+            }
+
+            let li = document.createElement("li");
+            li.textContent = itemText;
+
+            let removeButton = document.createElement("button");
+            removeButton.textContent = "Remover";
+            removeButton.classList.add("remove-btn");
+            removeButton.addEventListener("click", function() {
+                li.remove();
+            });
+
+            li.appendChild(removeButton);
+            document.getElementById("lista").appendChild(li);
+
+            input.value = "";
+            input.focus();
+        });
+    </script>
+</body>
+</html>
